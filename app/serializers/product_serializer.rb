@@ -1,7 +1,7 @@
-class ProductSerializer < ActiveModel::Serializer
+class ProductSerializer < BaseSerializer
   attributes :id, :code, :name, :price, :updated_at
 
   def price
-    sprintf("%.2f", object.price / 100)
+    format_price(object.price)
   end
 end
