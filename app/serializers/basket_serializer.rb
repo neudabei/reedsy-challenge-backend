@@ -1,7 +1,15 @@
 class BasketSerializer < BaseSerializer
-  attributes :checkout_price, :updated_at
+  attributes :product_summary, :total, :updated_at
 
-  def checkout_price
+  def product_summary
+    basket_presenter.product_summary
+  end
+
+  def total
     format_price(object.checkout_price)
+  end
+
+  def basket_presenter
+    BasketPresenter.new(object)
   end
 end
